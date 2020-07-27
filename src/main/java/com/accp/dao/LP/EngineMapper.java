@@ -1,4 +1,4 @@
-package com.accp.dao;
+package com.accp.dao.LP;
 
 import java.util.List;
 

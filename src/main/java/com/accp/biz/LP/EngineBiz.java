@@ -1,4 +1,4 @@
-package com.accp.biz.LingPeng;
+package com.accp.biz.LP;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.EngineMapper;
+import com.accp.dao.LP.EngineMapper;
 import com.accp.pojo.Engine;
 
 @Service

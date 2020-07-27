@@ -1,4 +1,4 @@
-package com.accp.action.LingPeng;
+package com.accp.action.LP;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accp.biz.LingPeng.EngineBiz;
+import com.accp.biz.LP.EngineBiz;
 import com.accp.pojo.Engine;
 
 @RestController
