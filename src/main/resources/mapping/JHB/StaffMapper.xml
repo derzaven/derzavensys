@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.StaffMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Staff">
+		<id column="staid" property="staid" jdbcType="VARCHAR" />
+		<result column="posid" property="posid" jdbcType="INTEGER" />
+		<result column="depname" property="depname" jdbcType="VARCHAR" />
+		<result column="posname" property="posname" jdbcType="VARCHAR" />
+		<result column="staname" property="staname" jdbcType="VARCHAR" />
+		<result column="stasex" property="stasex" jdbcType="INTEGER" />
+		<result column="staborth" property="staborth" jdbcType="DATE" />
+		<result column="staidcard" property="staidcard"
+			jdbcType="VARCHAR" />
+		<result column="staaddress" property="staaddress"
+			jdbcType="VARCHAR" />
+		<result column="imgsrc" property="imgsrc" jdbcType="VARCHAR" />
+		<result column="accounts" property="accounts"
+			jdbcType="VARCHAR" />
+		<result column="pwd" property="pwd" jdbcType="VARCHAR" />
+		<result column="entrydate" property="entrydate" jdbcType="DATE" />
+		<result column="instate" property="instate" jdbcType="INTEGER" />
+		<result column="dimissiondate" property="dimissiondate"
+			jdbcType="DATE" />
+		<result column="dimissioncause" property="dimissioncause"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap type="com.accp.pojo.Staff" id="mainInfo">
+
+	</resultMap>
+	<sql id="Base_Column_List">
+		staid, posid, depname, posname, staname, stasex, staborth,
+		staidcard,
+		staaddress,
+		imgsrc, accounts, pwd, entrydate, instate,
+		dimissiondate, dimissioncause
+	</sql>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from staff
+	</select>
+	<insert id="insert">
+		insert staff
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="staid != null">
+				staid,
+			</if>
+			<if test="posid != null">
+				posid,
+			</if>
+			<if test="depname != null">
+				depname,
+			</if>
+			<if test="posname != null">
+				posname,
+			</if>
+			<if test="staname != null">
+				staname,
+			</if>
+			<if test="stasex != null">
+				stasex,
+			</if>
+			<if test="staborth != null">
+				staborth,
+			</if>
+			<if test="staidcard != null">
+				staidcard,
+			</if>
+			<if test="staaddress != null">
+				staaddress,
+			</if>
+			<if test="imgsrc != null">
+				imgsrc,
+			</if>
+			<if test="accounts != null">
+				accounts,
+			</if>
+			<if test="pwd != null">
+				pwd,
+			</if>
+			<if test="entrydate != null">
+				entrydate,
+			</if>
+			<if test="instate != null">
+				instate,
+			</if>
+			<if test="dimissiondate != null">
+				dimissiondate,
+			</if>
+			<if test="dimissioncause != null">
+				dimissioncause,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="staid != null">
+				#{staid},
+			</if>
+			<if test="posid != null">
+				#{posid},
+			</if>
+			<if test="depname != null">
+				#{depname},
+			</if>
+			<if test="posname != null">
+				#{posname},
+			</if>
+			<if test="staname != null">
+				#{staname},
+			</if>
+			<if test="stasex != null">
+				#{stasex},
+			</if>
+			<if test="staborth != null">
+				#{staborth},
+			</if>
+			<if test="staidcard != null">
+				#{staidcard},
+			</if>
+			<if test="staaddress != null">
+				#{staaddress},
+			</if>
+			<if test="imgsrc != null">
+				#{imgsrc},
+			</if>
+			<if test="accounts != null">
+				#{accounts},
+			</if>
+			<if test="pwd != null">
+				#{pwd},
+			</if>
+			<if test="entrydate != null">
+				#{entrydate},
+			</if>
+			<if test="instate != null">
+				#{instate},
+			</if>
+			<if test="dimissiondate != null">
+				#{dimissiondate},
+			</if>
+			<if test="dimissioncause != null">
+				#{dimissioncause},
+			</if>
+		</trim>
+	</insert>
+	<select id="selectMaxId" resultType="java.lang.String">
+		SELECT MAX(staid) FROM staff
+	</select>
+</mapper>

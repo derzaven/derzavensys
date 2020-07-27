@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.DepartmentMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Department">
+		<id column="depid" property="depid" jdbcType="INTEGER" />
+		<result column="depname" property="depname" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap type="com.accp.pojo.Department" id="mainInfo">
+		<id column="depid" property="depid" jdbcType="INTEGER" />
+		<result column="depname" property="depname" jdbcType="VARCHAR" />
+		<collection property="poss" column="depid" select="selectPos"></collection>
+	</resultMap>
+	<select id="selectPos" resultType="com.accp.pojo.Position">
+		select * from `position`
+		where depid=#{0}
+	</select>
+	<sql id="Base_Column_List">
+		depid, depname
+	</sql>
+	<select id="selectAll" resultMap="mainInfo">
+		select * from department
+	</select>
+</mapper>

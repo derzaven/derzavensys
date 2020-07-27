@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.PositionMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Position">
+		<id column="posid" property="posid" jdbcType="INTEGER" />
+		<result column="depid" property="depid" jdbcType="INTEGER" />
+		<result column="posname" property="posname" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		posid, depid, posname
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from position
+		where posid = #{posid,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from position
+		where posid = #{posid,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.accp.pojo.Position">
+		insert into position (posid, depid, posname
+		)
+		values (#{posid,jdbcType=INTEGER}, #{depid,jdbcType=INTEGER},
+		#{posname,jdbcType=VARCHAR}
+		)
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.accp.pojo.Position">
+		insert into position
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="posid != null">
+				posid,
+			</if>
+			<if test="depid != null">
+				depid,
+			</if>
+			<if test="posname != null">
+				posname,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="posid != null">
+				#{posid,jdbcType=INTEGER},
+			</if>
+			<if test="depid != null">
+				#{depid,jdbcType=INTEGER},
+			</if>
+			<if test="posname != null">
+				#{posname,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.accp.pojo.Position">
+		update position
+		<set>
+			<if test="depid != null">
+				depid = #{depid,jdbcType=INTEGER},
+			</if>
+			<if test="posname != null">
+				posname = #{posname,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where posid = #{posid,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.accp.pojo.Position">
+		update position
+		set depid = #{depid,jdbcType=INTEGER},
+		posname = #{posname,jdbcType=VARCHAR}
+		where posid = #{posid,jdbcType=INTEGER}
+	</update>
+</mapper>
