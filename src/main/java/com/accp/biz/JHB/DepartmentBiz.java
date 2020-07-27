@@ -5,5 +5,6 @@ import java.util.List;
 import com.accp.pojo.Department;
 
 public interface DepartmentBiz {
+	//4444
 	public List<Department> selectAll();
 }
