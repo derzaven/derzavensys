@@ -15,7 +15,4 @@
 	<sql id="Base_Column_List">
 		clrno, clid, cliname, cmlid, cbdname, cmlmodel, engid, engname, affiliation
 	</sql>
-	<select id="selectAll">
-		
-	</select>
 </mapper>
