@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.GroupMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Group" >
+    <id column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="staid" property="staid" jdbcType="VARCHAR" />
+    <result column="principal" property="principal" jdbcType="VARCHAR" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="module" property="module" jdbcType="VARCHAR" />
+    <result column="cost" property="cost" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    classid, staid, principal, classname, module, cost
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from group
+    where classid = #{classid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from group
+    where classid = #{classid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Group" >
+    insert into group (classid, staid, principal, 
+      classname, module, cost
+      )
+    values (#{classid,jdbcType=INTEGER}, #{staid,jdbcType=VARCHAR}, #{principal,jdbcType=VARCHAR}, 
+      #{classname,jdbcType=VARCHAR}, #{module,jdbcType=VARCHAR}, #{cost,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Group" >
+    insert into group
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="staid != null" >
+        staid,
+      </if>
+      <if test="principal != null" >
+        principal,
+      </if>
+      <if test="classname != null" >
+        classname,
+      </if>
+      <if test="module != null" >
+        module,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="staid != null" >
+        #{staid,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null" >
+        #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null" >
+        #{module,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Group" >
+    update group
+    <set >
+      <if test="staid != null" >
+        staid = #{staid,jdbcType=VARCHAR},
+      </if>
+      <if test="principal != null" >
+        principal = #{principal,jdbcType=VARCHAR},
+      </if>
+      <if test="classname != null" >
+        classname = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null" >
+        module = #{module,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where classid = #{classid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Group" >
+    update group
+    set staid = #{staid,jdbcType=VARCHAR},
+      principal = #{principal,jdbcType=VARCHAR},
+      classname = #{classname,jdbcType=VARCHAR},
+      module = #{module,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=DECIMAL}
+    where classid = #{classid,jdbcType=INTEGER}
+  </update>
+</mapper>

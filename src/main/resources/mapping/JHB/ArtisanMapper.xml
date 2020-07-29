@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.ArtisanMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Artisan" >
+    <id column="artid" property="artid" jdbcType="INTEGER" />
+    <result column="lvid" property="lvid" jdbcType="INTEGER" />
+    <result column="lvname" property="lvname" jdbcType="VARCHAR" />
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="artname" property="artname" jdbcType="VARCHAR" />
+    <result column="artsex" property="artsex" jdbcType="INTEGER" />
+    <result column="artphone" property="artphone" jdbcType="VARCHAR" />
+    <result column="artadress" property="artadress" jdbcType="VARCHAR" />
+    <result column="artborth" property="artborth" jdbcType="DATE" />
+    <result column="artidcard" property="artidcard" jdbcType="VARCHAR" />
+    <result column="entrydate" property="entrydate" jdbcType="DATE" />
+    <result column="atjstate" property="atjstate" jdbcType="INTEGER" />
+    <result column="dimissiondate" property="dimissiondate" jdbcType="DATE" />
+    <result column="dimcause" property="dimcause" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    artid, lvid, lvname, classid, classname, artname, artsex, artphone, artadress, artborth, 
+    artidcard, entrydate, atjstate, dimissiondate, dimcause
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from artisan
+    where artid = #{artid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from artisan
+    where artid = #{artid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Artisan" >
+    insert into artisan (artid, lvid, lvname, 
+      classid, classname, artname, 
+      artsex, artphone, artadress, 
+      artborth, artidcard, entrydate, 
+      atjstate, dimissiondate, dimcause
+      )
+    values (#{artid,jdbcType=INTEGER}, #{lvid,jdbcType=INTEGER}, #{lvname,jdbcType=VARCHAR}, 
+      #{classid,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, #{artname,jdbcType=VARCHAR}, 
+      #{artsex,jdbcType=INTEGER}, #{artphone,jdbcType=VARCHAR}, #{artadress,jdbcType=VARCHAR}, 
+      #{artborth,jdbcType=DATE}, #{artidcard,jdbcType=VARCHAR}, #{entrydate,jdbcType=DATE}, 
+      #{atjstate,jdbcType=INTEGER}, #{dimissiondate,jdbcType=DATE}, #{dimcause,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Artisan" >
+    insert into artisan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="artid != null" >
+        artid,
+      </if>
+      <if test="lvid != null" >
+        lvid,
+      </if>
+      <if test="lvname != null" >
+        lvname,
+      </if>
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="classname != null" >
+        classname,
+      </if>
+      <if test="artname != null" >
+        artname,
+      </if>
+      <if test="artsex != null" >
+        artsex,
+      </if>
+      <if test="artphone != null" >
+        artphone,
+      </if>
+      <if test="artadress != null" >
+        artadress,
+      </if>
+      <if test="artborth != null" >
+        artborth,
+      </if>
+      <if test="artidcard != null" >
+        artidcard,
+      </if>
+      <if test="entrydate != null" >
+        entrydate,
+      </if>
+      <if test="atjstate != null" >
+        atjstate,
+      </if>
+      <if test="dimissiondate != null" >
+        dimissiondate,
+      </if>
+      <if test="dimcause != null" >
+        dimcause,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="artid != null" >
+        #{artid,jdbcType=INTEGER},
+      </if>
+      <if test="lvid != null" >
+        #{lvid,jdbcType=INTEGER},
+      </if>
+      <if test="lvname != null" >
+        #{lvname,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="artname != null" >
+        #{artname,jdbcType=VARCHAR},
+      </if>
+      <if test="artsex != null" >
+        #{artsex,jdbcType=INTEGER},
+      </if>
+      <if test="artphone != null" >
+        #{artphone,jdbcType=VARCHAR},
+      </if>
+      <if test="artadress != null" >
+        #{artadress,jdbcType=VARCHAR},
+      </if>
+      <if test="artborth != null" >
+        #{artborth,jdbcType=DATE},
+      </if>
+      <if test="artidcard != null" >
+        #{artidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        #{entrydate,jdbcType=DATE},
+      </if>
+      <if test="atjstate != null" >
+        #{atjstate,jdbcType=INTEGER},
+      </if>
+      <if test="dimissiondate != null" >
+        #{dimissiondate,jdbcType=DATE},
+      </if>
+      <if test="dimcause != null" >
+        #{dimcause,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Artisan" >
+    update artisan
+    <set >
+      <if test="lvid != null" >
+        lvid = #{lvid,jdbcType=INTEGER},
+      </if>
+      <if test="lvname != null" >
+        lvname = #{lvname,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        classid = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        classname = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="artname != null" >
+        artname = #{artname,jdbcType=VARCHAR},
+      </if>
+      <if test="artsex != null" >
+        artsex = #{artsex,jdbcType=INTEGER},
+      </if>
+      <if test="artphone != null" >
+        artphone = #{artphone,jdbcType=VARCHAR},
+      </if>
+      <if test="artadress != null" >
+        artadress = #{artadress,jdbcType=VARCHAR},
+      </if>
+      <if test="artborth != null" >
+        artborth = #{artborth,jdbcType=DATE},
+      </if>
+      <if test="artidcard != null" >
+        artidcard = #{artidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="entrydate != null" >
+        entrydate = #{entrydate,jdbcType=DATE},
+      </if>
+      <if test="atjstate != null" >
+        atjstate = #{atjstate,jdbcType=INTEGER},
+      </if>
+      <if test="dimissiondate != null" >
+        dimissiondate = #{dimissiondate,jdbcType=DATE},
+      </if>
+      <if test="dimcause != null" >
+        dimcause = #{dimcause,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where artid = #{artid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Artisan" >
+    update artisan
+    set lvid = #{lvid,jdbcType=INTEGER},
+      lvname = #{lvname,jdbcType=VARCHAR},
+      classid = #{classid,jdbcType=INTEGER},
+      classname = #{classname,jdbcType=VARCHAR},
+      artname = #{artname,jdbcType=VARCHAR},
+      artsex = #{artsex,jdbcType=INTEGER},
+      artphone = #{artphone,jdbcType=VARCHAR},
+      artadress = #{artadress,jdbcType=VARCHAR},
+      artborth = #{artborth,jdbcType=DATE},
+      artidcard = #{artidcard,jdbcType=VARCHAR},
+      entrydate = #{entrydate,jdbcType=DATE},
+      atjstate = #{atjstate,jdbcType=INTEGER},
+      dimissiondate = #{dimissiondate,jdbcType=DATE},
+      dimcause = #{dimcause,jdbcType=VARCHAR}
+    where artid = #{artid,jdbcType=INTEGER}
+  </update>
+</mapper>

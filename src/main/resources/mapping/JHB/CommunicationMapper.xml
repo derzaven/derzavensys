@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.CommunicationMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Communication" >
+    <id column="comid" property="comid" jdbcType="INTEGER" />
+    <result column="staid" property="staid" jdbcType="VARCHAR" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="linkphone" property="linkphone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="relation" property="relation" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    comid, staid, linkman, linkphone, email, relation
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from communication
+    where comid = #{comid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from communication
+    where comid = #{comid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Communication" >
+    insert into communication (comid, staid, linkman, 
+      linkphone, email, relation
+      )
+    values (#{comid,jdbcType=INTEGER}, #{staid,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, 
+      #{linkphone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{relation,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Communication" >
+    insert into communication
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="comid != null" >
+        comid,
+      </if>
+      <if test="staid != null" >
+        staid,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="linkphone != null" >
+        linkphone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="relation != null" >
+        relation,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="comid != null" >
+        #{comid,jdbcType=INTEGER},
+      </if>
+      <if test="staid != null" >
+        #{staid,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkphone != null" >
+        #{linkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        #{relation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Communication" >
+    update communication
+    <set >
+      <if test="staid != null" >
+        staid = #{staid,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkphone != null" >
+        linkphone = #{linkphone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null" >
+        relation = #{relation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where comid = #{comid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Communication" >
+    update communication
+    set staid = #{staid,jdbcType=VARCHAR},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      linkphone = #{linkphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      relation = #{relation,jdbcType=VARCHAR}
+    where comid = #{comid,jdbcType=INTEGER}
+  </update>
+</mapper>

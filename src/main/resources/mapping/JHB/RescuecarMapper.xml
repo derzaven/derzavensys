@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.RescuecarMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Rescuecar" >
+    <id column="resno" property="resno" jdbcType="VARCHAR" />
+    <result column="classid" property="classid" jdbcType="INTEGER" />
+    <result column="classname" property="classname" jdbcType="VARCHAR" />
+    <result column="outstate" property="outstate" jdbcType="INTEGER" />
+    <result column="mileage" property="mileage" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resno, classid, classname, outstate, mileage
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from rescuecar
+    where resno = #{resno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from rescuecar
+    where resno = #{resno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Rescuecar" >
+    insert into rescuecar (resno, classid, classname, 
+      outstate, mileage)
+    values (#{resno,jdbcType=VARCHAR}, #{classid,jdbcType=INTEGER}, #{classname,jdbcType=VARCHAR}, 
+      #{outstate,jdbcType=INTEGER}, #{mileage,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Rescuecar" >
+    insert into rescuecar
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resno != null" >
+        resno,
+      </if>
+      <if test="classid != null" >
+        classid,
+      </if>
+      <if test="classname != null" >
+        classname,
+      </if>
+      <if test="outstate != null" >
+        outstate,
+      </if>
+      <if test="mileage != null" >
+        mileage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resno != null" >
+        #{resno,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null" >
+        #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="outstate != null" >
+        #{outstate,jdbcType=INTEGER},
+      </if>
+      <if test="mileage != null" >
+        #{mileage,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Rescuecar" >
+    update rescuecar
+    <set >
+      <if test="classid != null" >
+        classid = #{classid,jdbcType=INTEGER},
+      </if>
+      <if test="classname != null" >
+        classname = #{classname,jdbcType=VARCHAR},
+      </if>
+      <if test="outstate != null" >
+        outstate = #{outstate,jdbcType=INTEGER},
+      </if>
+      <if test="mileage != null" >
+        mileage = #{mileage,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where resno = #{resno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Rescuecar" >
+    update rescuecar
+    set classid = #{classid,jdbcType=INTEGER},
+      classname = #{classname,jdbcType=VARCHAR},
+      outstate = #{outstate,jdbcType=INTEGER},
+      mileage = #{mileage,jdbcType=DECIMAL}
+    where resno = #{resno,jdbcType=VARCHAR}
+  </update>
+</mapper>

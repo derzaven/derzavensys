@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JHB.CilcarMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Cilcar">
+		<id column="clrno" property="clrno" jdbcType="VARCHAR" />
+		<result column="clid" property="clid" jdbcType="INTEGER" />
+		<result column="cliname" property="cliname" jdbcType="VARCHAR" />
+		<result column="cmlid" property="cmlid" jdbcType="INTEGER" />
+		<result column="cbdname" property="cbdname" jdbcType="VARCHAR" />
+		<result column="cmlmodel" property="cmlmodel" jdbcType="VARCHAR" />
+		<result column="engid" property="engid" jdbcType="INTEGER" />
+		<result column="engname" property="engname" jdbcType="VARCHAR" />
+		<result column="affiliation" property="affiliation" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		clrno, clid, cliname, cmlid, cbdname, cmlmodel, engid, engname, affiliation
+	</sql>
+	<select id="selectAll">
+		
+	</select>
+</mapper>
