@@ -1,11 +1,34 @@
 package com.accp.pojo;
 
-public class Cilcar {
-    private String clrno;
+import java.io.Serializable;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@TableName("cilcar")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Cilcar implements Serializable {
+	
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@TableId(type = IdType.INPUT,value = "clrno")
+	private String clrno;
 
     private Integer clid;
 
     private String cliname;
+    
+    private String cliphone;
 
     private Integer cmlid;
 
@@ -18,76 +41,4 @@ public class Cilcar {
     private String engname;
 
     private String affiliation;
-
-    public String getClrno() {
-        return clrno;
-    }
-
-    public void setClrno(String clrno) {
-        this.clrno = clrno == null ? null : clrno.trim();
-    }
-
-    public Integer getClid() {
-        return clid;
-    }
-
-    public void setClid(Integer clid) {
-        this.clid = clid;
-    }
-
-    public String getCliname() {
-        return cliname;
-    }
-
-    public void setCliname(String cliname) {
-        this.cliname = cliname == null ? null : cliname.trim();
-    }
-
-    public Integer getCmlid() {
-        return cmlid;
-    }
-
-    public void setCmlid(Integer cmlid) {
-        this.cmlid = cmlid;
-    }
-
-    public String getCbdname() {
-        return cbdname;
-    }
-
-    public void setCbdname(String cbdname) {
-        this.cbdname = cbdname == null ? null : cbdname.trim();
-    }
-
-    public String getCmlmodel() {
-        return cmlmodel;
-    }
-
-    public void setCmlmodel(String cmlmodel) {
-        this.cmlmodel = cmlmodel == null ? null : cmlmodel.trim();
-    }
-
-    public Integer getEngid() {
-        return engid;
-    }
-
-    public void setEngid(Integer engid) {
-        this.engid = engid;
-    }
-
-    public String getEngname() {
-        return engname;
-    }
-
-    public void setEngname(String engname) {
-        this.engname = engname == null ? null : engname.trim();
-    }
-
-    public String getAffiliation() {
-        return affiliation;
-    }
-
-    public void setAffiliation(String affiliation) {
-        this.affiliation = affiliation == null ? null : affiliation.trim();
-    }
 }
