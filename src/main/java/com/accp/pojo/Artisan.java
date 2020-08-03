@@ -1,8 +1,28 @@
 package com.accp.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Artisan {
+import com.alibaba.fastjson.annotation.JSONField;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Artisan implements Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@TableId(type=IdType.INPUT,value="artid")
     private Integer artid;
 
     private Integer lvid;
@@ -20,7 +40,8 @@ public class Artisan {
     private String artphone;
 
     private String artadress;
-
+    
+    @JSONField(format = "yyyy-MM-dd")
     private Date artborth;
 
     private String artidcard;
@@ -29,6 +50,7 @@ public class Artisan {
 
     private Integer atjstate;
 
+    @JSONField(format = "yyyy-MM-dd")
     private Date dimissiondate;
 
     private String dimcause;
