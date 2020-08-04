@@ -1,17 +1,11 @@
 package com.accp.dao.JHB;
 
+import org.springframework.stereotype.Component;
+
 import com.accp.pojo.Group;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface GroupMapper {
-    int deleteByPrimaryKey(Integer classid);
-
-    int insert(Group record);
-
-    int insertSelective(Group record);
-
-    Group selectByPrimaryKey(Integer classid);
-
-    int updateByPrimaryKeySelective(Group record);
-
-    int updateByPrimaryKey(Group record);
+@Component("JHBGroupMapper")
+public interface GroupMapper extends BaseMapper<Group> {
+    
 }

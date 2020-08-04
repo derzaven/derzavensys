@@ -1,17 +1,11 @@
 package com.accp.dao.JHB;
 
+import org.springframework.stereotype.Component;
+
 import com.accp.pojo.Project;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface ProjectMapper {
-    int deleteByPrimaryKey(Integer proid);
-
-    int insert(Project record);
-
-    int insertSelective(Project record);
-
-    Project selectByPrimaryKey(Integer proid);
-
-    int updateByPrimaryKeySelective(Project record);
-
-    int updateByPrimaryKey(Project record);
+@Component("JHBProjectMapper")
+public interface ProjectMapper extends BaseMapper<Project> {
+    
 }

@@ -1,17 +1,11 @@
 package com.accp.dao.JHB;
 
+import org.springframework.stereotype.Component;
+
 import com.accp.pojo.Repairbill;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface RepairbillMapper {
-    int deleteByPrimaryKey(String odd);
-
-    int insert(Repairbill record);
-
-    int insertSelective(Repairbill record);
-
-    Repairbill selectByPrimaryKey(String odd);
-
-    int updateByPrimaryKeySelective(Repairbill record);
-
-    int updateByPrimaryKey(Repairbill record);
+@Component("JHBRepairbillMapper")
+public interface RepairbillMapper extends BaseMapper<Repairbill> {
+    
 }

@@ -1,5 +1,7 @@
 package com.accp.action.JHB;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.JHB.StaffBiz;
+import com.accp.biz.JHB.impl.StaffBizImpl;
 import com.accp.pojo.Staff;
 import com.github.pagehelper.PageInfo;
 
@@ -17,6 +20,8 @@ import com.github.pagehelper.PageInfo;
 public class StaffAction {
 	@Autowired
 	private StaffBiz sbz;
+	@Autowired
+	private StaffBizImpl sbzImpl;
 	@GetMapping("/selectAll/{pageNum}/{pageSize}")
 	public PageInfo<Staff> selectAll(@PathVariable Integer pageNum,@PathVariable Integer pageSize){
 		System.out.println(pageNum);
@@ -31,5 +36,9 @@ public class StaffAction {
 		String staId=sbz.selectMaxId();
 		Integer newId=Integer.parseInt(staId.substring(2))+1;
 		return staId.substring(0, 2)+newId;
+	}
+	@GetMapping("/selectWaiter")
+	public List<Staff> selectWaiter() {
+		return sbz.selectWaiter();
 	}
 }

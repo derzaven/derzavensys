@@ -1,128 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.JHB.GoodsMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Goods" >
-    <id column="goodsid" property="goodsid" jdbcType="INTEGER" />
-    <result column="goodsname" property="goodsname" jdbcType="VARCHAR" />
-    <result column="inventory" property="inventory" jdbcType="INTEGER" />
-    <result column="supid" property="supid" jdbcType="INTEGER" />
-    <result column="supname" property="supname" jdbcType="VARCHAR" />
-    <result column="supbrand" property="supbrand" jdbcType="VARCHAR" />
-    <result column="supaddress" property="supaddress" jdbcType="VARCHAR" />
-    <result column="goodsprice" property="goodsprice" jdbcType="DECIMAL" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    goodsid, goodsname, inventory, supid, supname, supbrand, supaddress, goodsprice
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from goods
-    where goodsid = #{goodsid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from goods
-    where goodsid = #{goodsid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.accp.pojo.Goods" >
-    insert into goods (goodsid, goodsname, inventory, 
-      supid, supname, supbrand, 
-      supaddress, goodsprice)
-    values (#{goodsid,jdbcType=INTEGER}, #{goodsname,jdbcType=VARCHAR}, #{inventory,jdbcType=INTEGER}, 
-      #{supid,jdbcType=INTEGER}, #{supname,jdbcType=VARCHAR}, #{supbrand,jdbcType=VARCHAR}, 
-      #{supaddress,jdbcType=VARCHAR}, #{goodsprice,jdbcType=DECIMAL})
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.Goods" >
-    insert into goods
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="goodsid != null" >
-        goodsid,
-      </if>
-      <if test="goodsname != null" >
-        goodsname,
-      </if>
-      <if test="inventory != null" >
-        inventory,
-      </if>
-      <if test="supid != null" >
-        supid,
-      </if>
-      <if test="supname != null" >
-        supname,
-      </if>
-      <if test="supbrand != null" >
-        supbrand,
-      </if>
-      <if test="supaddress != null" >
-        supaddress,
-      </if>
-      <if test="goodsprice != null" >
-        goodsprice,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="goodsid != null" >
-        #{goodsid,jdbcType=INTEGER},
-      </if>
-      <if test="goodsname != null" >
-        #{goodsname,jdbcType=VARCHAR},
-      </if>
-      <if test="inventory != null" >
-        #{inventory,jdbcType=INTEGER},
-      </if>
-      <if test="supid != null" >
-        #{supid,jdbcType=INTEGER},
-      </if>
-      <if test="supname != null" >
-        #{supname,jdbcType=VARCHAR},
-      </if>
-      <if test="supbrand != null" >
-        #{supbrand,jdbcType=VARCHAR},
-      </if>
-      <if test="supaddress != null" >
-        #{supaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsprice != null" >
-        #{goodsprice,jdbcType=DECIMAL},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Goods" >
-    update goods
-    <set >
-      <if test="goodsname != null" >
-        goodsname = #{goodsname,jdbcType=VARCHAR},
-      </if>
-      <if test="inventory != null" >
-        inventory = #{inventory,jdbcType=INTEGER},
-      </if>
-      <if test="supid != null" >
-        supid = #{supid,jdbcType=INTEGER},
-      </if>
-      <if test="supname != null" >
-        supname = #{supname,jdbcType=VARCHAR},
-      </if>
-      <if test="supbrand != null" >
-        supbrand = #{supbrand,jdbcType=VARCHAR},
-      </if>
-      <if test="supaddress != null" >
-        supaddress = #{supaddress,jdbcType=VARCHAR},
-      </if>
-      <if test="goodsprice != null" >
-        goodsprice = #{goodsprice,jdbcType=DECIMAL},
-      </if>
-    </set>
-    where goodsid = #{goodsid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Goods" >
-    update goods
-    set goodsname = #{goodsname,jdbcType=VARCHAR},
-      inventory = #{inventory,jdbcType=INTEGER},
-      supid = #{supid,jdbcType=INTEGER},
-      supname = #{supname,jdbcType=VARCHAR},
-      supbrand = #{supbrand,jdbcType=VARCHAR},
-      supaddress = #{supaddress,jdbcType=VARCHAR},
-      goodsprice = #{goodsprice,jdbcType=DECIMAL}
-    where goodsid = #{goodsid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.accp.dao.JHB.GoodsMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Goods">
+		<id column="goodsid" property="goodsid" jdbcType="INTEGER" />
+		<result column="goodsname" property="goodsname"
+			jdbcType="VARCHAR" />
+		<result column="goodstype" property="goodstype" jdbcType="VARCHAR" />
+		<result column="inventory" property="inventory" jdbcType="INTEGER" />
+		<result column="supid" property="supid" jdbcType="INTEGER" />
+		<result column="supname" property="supname" jdbcType="VARCHAR" />
+		<result column="supbrand" property="supbrand" jdbcType="VARCHAR" />
+		<result column="supaddress" property="supaddress" jdbcType="VARCHAR" />
+		<result column="goodsprice" property="goodsprice" jdbcType="DECIMAL" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		goodsid, goodsname, goodstype, inventory, supid, supname, supbrand, supaddress,
+		goodsprice
+	</sql>
 </mapper>

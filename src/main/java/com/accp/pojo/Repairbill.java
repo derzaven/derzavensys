@@ -1,10 +1,31 @@
 package com.accp.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Repairbill {
-    private String odd;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@TableName("repairbill")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Repairbill implements Serializable {
+	
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@TableId(type = IdType.INPUT,value = "odd")
+	private String odd;
 
     private String clino;
 
@@ -15,16 +36,20 @@ public class Repairbill {
     private String staid;
 
     private String staname;
-
+    
     private String resno;
-
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date billingtime;
 
     private String maintaintype;
-
+    @JSONField(format = "yyyy-MM-dd")
     private Date predictdate;
-
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date practicaldate;
+    
+    private String cause;
+    
+    private String remark;
 
     private Integer bcstate;
 
@@ -46,171 +71,4 @@ public class Repairbill {
 
     private BigDecimal caamoney;
 
-    public String getOdd() {
-        return odd;
-    }
-
-    public void setOdd(String odd) {
-        this.odd = odd == null ? null : odd.trim();
-    }
-
-    public String getClino() {
-        return clino;
-    }
-
-    public void setClino(String clino) {
-        this.clino = clino == null ? null : clino.trim();
-    }
-
-    public Integer getClassid() {
-        return classid;
-    }
-
-    public void setClassid(Integer classid) {
-        this.classid = classid;
-    }
-
-    public String getClassname() {
-        return classname;
-    }
-
-    public void setClassname(String classname) {
-        this.classname = classname == null ? null : classname.trim();
-    }
-
-    public String getStaid() {
-        return staid;
-    }
-
-    public void setStaid(String staid) {
-        this.staid = staid == null ? null : staid.trim();
-    }
-
-    public String getStaname() {
-        return staname;
-    }
-
-    public void setStaname(String staname) {
-        this.staname = staname == null ? null : staname.trim();
-    }
-
-    public String getResno() {
-        return resno;
-    }
-
-    public void setResno(String resno) {
-        this.resno = resno == null ? null : resno.trim();
-    }
-
-    public Date getBillingtime() {
-        return billingtime;
-    }
-
-    public void setBillingtime(Date billingtime) {
-        this.billingtime = billingtime;
-    }
-
-    public String getMaintaintype() {
-        return maintaintype;
-    }
-
-    public void setMaintaintype(String maintaintype) {
-        this.maintaintype = maintaintype == null ? null : maintaintype.trim();
-    }
-
-    public Date getPredictdate() {
-        return predictdate;
-    }
-
-    public void setPredictdate(Date predictdate) {
-        this.predictdate = predictdate;
-    }
-
-    public Date getPracticaldate() {
-        return practicaldate;
-    }
-
-    public void setPracticaldate(Date practicaldate) {
-        this.practicaldate = practicaldate;
-    }
-
-    public Integer getBcstate() {
-        return bcstate;
-    }
-
-    public void setBcstate(Integer bcstate) {
-        this.bcstate = bcstate;
-    }
-
-    public BigDecimal getMhcost() {
-        return mhcost;
-    }
-
-    public void setMhcost(BigDecimal mhcost) {
-        this.mhcost = mhcost;
-    }
-
-    public Integer getConsumehour() {
-        return consumehour;
-    }
-
-    public void setConsumehour(Integer consumehour) {
-        this.consumehour = consumehour;
-    }
-
-    public BigDecimal getRescue() {
-        return rescue;
-    }
-
-    public void setRescue(BigDecimal rescue) {
-        this.rescue = rescue;
-    }
-
-    public BigDecimal getGoodsamt() {
-        return goodsamt;
-    }
-
-    public void setGoodsamt(BigDecimal goodsamt) {
-        this.goodsamt = goodsamt;
-    }
-
-    public BigDecimal getProjectamt() {
-        return projectamt;
-    }
-
-    public void setProjectamt(BigDecimal projectamt) {
-        this.projectamt = projectamt;
-    }
-
-    public BigDecimal getOddamt() {
-        return oddamt;
-    }
-
-    public void setOddamt(BigDecimal oddamt) {
-        this.oddamt = oddamt;
-    }
-
-    public Integer getCaastate() {
-        return caastate;
-    }
-
-    public void setCaastate(Integer caastate) {
-        this.caastate = caastate;
-    }
-
-    public String getCaatype() {
-        return caatype;
-    }
-
-    public void setCaatype(String caatype) {
-        this.caatype = caatype == null ? null : caatype.trim();
-    }
-
-    public BigDecimal getCaamoney() {
-        return caamoney;
-    }
-
-    public void setCaamoney(BigDecimal caamoney) {
-        this.caamoney = caamoney;
-    }
 }
