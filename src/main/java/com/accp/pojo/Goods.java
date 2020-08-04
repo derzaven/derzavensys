@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Goods implements Serializable {
 	/**
-	 * 
+	 * 123
 	 */
 	private static final long serialVersionUID = 1L;
 
