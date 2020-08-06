@@ -37,7 +37,7 @@ public class SiteBiz {
 		return siteMapper.SelectId(id);
 	}
 
-	public int Update(Site site) {
+	public int update(Site site) {
 		return siteMapper.update(site);
 	}
 	

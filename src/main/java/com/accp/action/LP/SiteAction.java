@@ -62,7 +62,7 @@ public class SiteAction {
 	@PutMapping("/UpdateSite")
 	public Map<String, Object> UpdateTree(@RequestBody Site site) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(siteBiz.Update(site) == 1) {
+		if(siteBiz.update(site) == 1) {
 			map.put("code", "200");
 			map.put("msg","ok");
 		}else {
