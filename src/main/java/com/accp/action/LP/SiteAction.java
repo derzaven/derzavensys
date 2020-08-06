@@ -28,9 +28,9 @@ public class SiteAction {
 	private SiteBiz siteBiz;
 	
 	@PostMapping("/AddSite")
-	public Map<String, Object> addTree(@RequestBody Site site) {
+	public Map<String, Object> addTree(@RequestBody Site sites) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(siteBiz.add(site) == 1) {
+		if(siteBiz.add(sites) == 1) {
 			map.put("code", "200");
 			map.put("msg","ok");
 		}else {
