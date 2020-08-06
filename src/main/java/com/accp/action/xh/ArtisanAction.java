@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.xh.ArtisanBiz;
+import com.accp.biz.xh.GroupBiz;
 import com.accp.pojo.Artisan;
 import com.github.pagehelper.PageInfo;
 
@@ -23,12 +24,14 @@ public class ArtisanAction {
 	@Autowired
 	private ArtisanBiz biz;
 	
+	@Autowired
+	private GroupBiz groupbiz;
+	
 	@GetMapping("{p}/{s}")
 	public PageInfo<Artisan> queryAll(@PathVariable Integer p, @PathVariable Integer s){
 		PageInfo<Artisan> page = biz.queryAll(p,s);
 		return page;
 	}
-	
 	
 	@PostMapping("insert")
 	public Map<String,Object> insert(Artisan artisan){
