@@ -1,7 +1,9 @@
 package com.accp.dao.JHB;
 
-import com.accp.pojo.Artisan;
+import org.springframework.stereotype.Component;
 
+import com.accp.pojo.Artisan;
+@Component("JHBArtisanMapper")
 public interface ArtisanMapper {
     int deleteByPrimaryKey(Integer artid);
 

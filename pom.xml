@@ -35,7 +35,21 @@
 			<artifactId>pagehelper-spring-boot-starter</artifactId>
 			<version>1.2.7</version>
 		</dependency>
-
+		
+		<!-- lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		
+		<!-- mybatis plus -->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.3.1.tmp</version>
+		</dependency>
+		
 		<!-- json -->
 		<dependency>
 			<groupId>com.alibaba</groupId>

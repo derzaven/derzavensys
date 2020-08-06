@@ -20,4 +20,23 @@
 	<select id="selectAll" resultMap="mainInfo">
 		select * from department
 	</select>
+ 	<select id="selectDepartment" resultType="com.accp.pojo.Department">
+ 		select * from department
+ 	</select>
+ 	
+ 	<insert id="insertDepartment" parameterType="com.accp.pojo.Department">
+ 		insert into department values(0,'${depname}')
+ 	</insert>
+ 	
+ 	<select id="selectById" resultType="com.accp.pojo.Department">
+ 		select * from department where depid='${depid}'
+ 	</select>
+ 	
+ 	<update id="update">
+ 		update department set depname = #{depname} where depid=#{depid}
+ 	</update>
+ 	
+ 	<delete id="deleteById">
+ 		delete from department where depid = '${depid}'
+ 	</delete>
 </mapper>
