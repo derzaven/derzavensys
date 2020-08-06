@@ -1,11 +1,34 @@
 package com.accp.pojo;
 
-public class Supplier {
-    private Integer supid;
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@TableName("supplier")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Supplier implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@TableId(type = IdType.AUTO,value = "supid")
+	private Integer supid;
 
     private String supname;
 
     private String supbrand;
+    
+    private Integer siteid;
 
     private String supaddress;
 
@@ -60,4 +83,13 @@ public class Supplier {
     public void setSupemail(String supemail) {
         this.supemail = supemail == null ? null : supemail.trim();
     }
+
+	public Integer getSiteid() {
+		return siteid;
+	}
+
+	public void setSiteid(Integer siteid) {
+		this.siteid = siteid;
+	}
+    
 }

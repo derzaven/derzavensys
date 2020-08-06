@@ -1,9 +1,28 @@
 package com.accp.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Carmodel {
-    private Integer cmlid;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@TableName("carmodel")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Carmodel implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@TableId(type = IdType.AUTO,value = "cmlid")
+	private Integer cmlid;
 
     private Integer cbdid;
 
@@ -17,59 +36,4 @@ public class Carmodel {
 
     private BigDecimal reference;
 
-    public Integer getCmlid() {
-        return cmlid;
-    }
-
-    public void setCmlid(Integer cmlid) {
-        this.cmlid = cmlid;
-    }
-
-    public Integer getCbdid() {
-        return cbdid;
-    }
-
-    public void setCbdid(Integer cbdid) {
-        this.cbdid = cbdid;
-    }
-
-    public String getCbdname() {
-        return cbdname;
-    }
-
-    public void setCbdname(String cbdname) {
-        this.cbdname = cbdname == null ? null : cbdname.trim();
-    }
-
-    public Integer getEngid() {
-        return engid;
-    }
-
-    public void setEngid(Integer engid) {
-        this.engid = engid;
-    }
-
-    public String getEngname() {
-        return engname;
-    }
-
-    public void setEngname(String engname) {
-        this.engname = engname == null ? null : engname.trim();
-    }
-
-    public String getCmlmodel() {
-        return cmlmodel;
-    }
-
-    public void setCmlmodel(String cmlmodel) {
-        this.cmlmodel = cmlmodel == null ? null : cmlmodel.trim();
-    }
-
-    public BigDecimal getReference() {
-        return reference;
-    }
-
-    public void setReference(BigDecimal reference) {
-        this.reference = reference;
-    }
 }

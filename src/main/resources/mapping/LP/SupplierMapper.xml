@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.LP.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Supplier" >
+    <id column="supid" property="supid" jdbcType="INTEGER" />
+    <result column="supname" property="supname" jdbcType="VARCHAR" />
+    <result column="supbrand" property="supbrand" jdbcType="VARCHAR" />
+     <result column="siteid" property="siteid" jdbcType="INTEGER" />
+    <result column="supaddress" property="supaddress" jdbcType="VARCHAR" />
+    <result column="supphone" property="supphone" jdbcType="VARCHAR" />
+    <result column="supemail" property="supemail" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    supid, supname, supbrand, siteid,supaddress, supphone, supemail
+  </sql>
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from supplier
+  </select>
+  <select id="selectId" resultMap="BaseResultMap">
+  		select * from supplier where siteid in
+  		<foreach collection="list" item="roleList" open="(" close=")" separator="," >
+  				#{roleList}
+  		</foreach>
+  </select>
+</mapper>

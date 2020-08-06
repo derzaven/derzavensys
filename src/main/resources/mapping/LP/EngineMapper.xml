@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.EngineMapper" >
+<mapper namespace="com.accp.dao.LP.EngineMapper" >
   <resultMap id="BaseResultMap" type="com.accp.pojo.Engine" >
     <id column="engid" property="engid" jdbcType="INTEGER" />
     <result column="engname" property="engname" jdbcType="VARCHAR" />
@@ -11,6 +11,9 @@
   </sql>
   <select id="query" resultMap="BaseResultMap">
   		select * from engine
+  </select>
+  <select id="queryBrand" resultMap="BaseResultMap">
+  		select * from engine where  engname = #{name} and engbrand = #{Brand}
   </select>
   <insert id="add">
   		insert into engine(engname, engbrand)values(#{eng.engname},#{eng.engbrand})

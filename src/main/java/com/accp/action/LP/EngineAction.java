@@ -19,7 +19,7 @@ import com.accp.pojo.Engine;
 
 @RestController
 @RequestMapping("/api/lingpeng")
-public class action {
+public class EngineAction {
 	@Autowired
 	private EngineBiz engineBiz;
 	
@@ -36,33 +36,41 @@ public class action {
 	@PostMapping("/AddEngine")
 	public Map<String, Object> add(@RequestBody Engine eng){
 		Map<String, Object> message = new HashMap<String, Object>();
-		if(engineBiz.add(eng) == 1) {
-			message.put("code", "200");
-			message.put("msg", "ok");
-		}else {
+		if(engineBiz.queryBrand(eng.getEngname(), eng.getEngbrand()).size() != 0) {
 			message.put("code", "300");
 			message.put("msg", "no");
+		}else {
+			if(engineBiz.add(eng) == 1) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}else {
+				message.put("code", "300");
+				message.put("msg", "no");
+			}
 		}
 		return message;
 	}
 	
 	@PutMapping("/UpdateEngine")
 	public Map<String, Object> update(@RequestBody Engine eng){
-		System.out.println(eng.getEngname());
 		Map<String, Object> message = new HashMap<String, Object>();
-		if(engineBiz.update(eng) == 1) {
-			message.put("code", "200");
-			message.put("msg", "ok");
-		}else {
+		if(engineBiz.queryBrand(eng.getEngname(), eng.getEngbrand()).size() != 0) {
 			message.put("code", "300");
 			message.put("msg", "no");
+		}else {
+			if(engineBiz.update(eng) == 1) {
+				message.put("code", "200");
+				message.put("msg", "ok");
+			}else {
+				message.put("code", "300");
+				message.put("msg", "no");
+			}
 		}
 		return message;
 	}
 	
 	@DeleteMapping("/DeleteEngine/{id}")
 	public Map<String, Object> deleteId(@PathVariable("id") Integer id) {
-		System.out.println("a");
 		Map<String, Object> message = new HashMap<String, Object>();
 		if (engineBiz.delete(id) == 1) {
 			message.put("code", "200");

@@ -21,4 +21,7 @@ public interface EngineMapper {
 	
 	//查询id
 	Engine queryId(@Param("id")Integer id);
+	
+	//根据名称和品牌
+	List<Engine> queryBrand(@Param("name")String name,@Param("Brand")String Brand);
 }

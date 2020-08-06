@@ -15,6 +15,7 @@ import com.accp.pojo.Department;
 public class DepartmentAction {
 	@Autowired
 	private DepartmentBiz db;
+	
 	@GetMapping("/selectAll")
 	public List<Department> selectAll(){
 		return db.selectAll();
