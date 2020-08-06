@@ -1,7 +1,9 @@
 package com.accp.dao.JHB;
 
-import com.accp.pojo.Starlevel;
+import org.springframework.stereotype.Component;
 
+import com.accp.pojo.Starlevel;
+@Component("JHBStarlevelMapper")
 public interface StarlevelMapper {
     int deleteByPrimaryKey(Integer lvid);
 
