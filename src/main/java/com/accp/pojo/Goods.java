@@ -1,11 +1,32 @@
 package com.accp.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
-public class Goods {
-    private Integer goodsid;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@TableName("goods")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Goods implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@TableId(type = IdType.AUTO,value = "goodsid")
+	private Integer goodsid;
 
     private String goodsname;
+    
+    private String goodstype;
 
     private Integer inventory;
 
@@ -18,6 +39,8 @@ public class Goods {
     private String supaddress;
 
     private BigDecimal goodsprice;
+    
+    private Integer state;
 
     public Integer getGoodsid() {
         return goodsid;
@@ -82,4 +105,5 @@ public class Goods {
     public void setGoodsprice(BigDecimal goodsprice) {
         this.goodsprice = goodsprice;
     }
+    
 }

@@ -13,5 +13,10 @@
   <sql id="Base_Column_List" >
     cmlid, cbdid, cbdname, engid, engname, cmlmodel, reference
   </sql>
- 
+ <update id="update">
+	update carmodel
+    set
+        cbdname = #{name}
+    where cbdid = #{id} 
+</update>
 </mapper>

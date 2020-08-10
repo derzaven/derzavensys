@@ -3,10 +3,12 @@ package com.accp.dao.LP;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import com.accp.pojo.Carbrand;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+@Component("LPCarbrandMapper")
 public interface CarbrandMapper extends BaseMapper<Carbrand>{
 	
 //	//查询所有

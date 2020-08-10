@@ -1,57 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.LP.SiteMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Site" >
-    <id column="siteid" property="siteid" jdbcType="INTEGER" />
-    <result column="sitename" property="sitename" jdbcType="VARCHAR" />
-    <result column="fsiteid" property="fsiteid" jdbcType="INTEGER" />
-    <collection property="children" column="fsiteid" select="queryAddess"></collection>
-  </resultMap>
-  <resultMap id="BaseResultMaps" type="com.accp.pojo.Site" >
-    <id column="siteid" property="siteid" jdbcType="INTEGER" />
-    <result column="sitename" property="sitename" jdbcType="VARCHAR" />
-    <result column="fsiteid" property="fsiteid" jdbcType="INTEGER" />
-    <collection property="children" column="siteid" select="querystie"></collection>
-  </resultMap>
-  <sql id="Base_Column_List" >
-    siteid, sitename, fsiteid
-  </sql>
-  <select id="selectAll" resultMap="BaseResultMap">
-  	select  siteid, sitename, fsiteid from site
-  </select>
-  <select id="queryAddess" resultType="com.accp.pojo.Site">
-  	select siteid, sitename, fsiteid  from site where 1=1
-  	<if test="fsiteid != 0" >
-  		and siteid = #{fsiteid}
-  	</if>
-  </select>
-  
-  <select id="queryId" resultMap="BaseResultMaps">
-  		select * from site where fsiteid = #{id}
-  </select>
-    <select id="querystie" resultType="com.accp.pojo.Site">
-  	select siteid, sitename, fsiteid  from site where fsiteid = #{siteid}
-  </select>
-  
-  <insert id="add">
-  		insert into site(sitename,fsiteid) VALUES (#{site.sitename},#{site.fsiteid})
-  </insert>
-  
-    <delete id="delete">
-  		delete from site where siteid=#{id}
-  </delete>
-  
-  <select id="SelectId" resultMap="BaseResultMap">
-  		select * from site where siteid = #{id}
-  </select>
-  
-  
-  
-   <update id="update">
-  	 update site
-    set
-        sitename = #{site.sitename}
-    where siteid = #{site.siteid}
-  </update>
-  
+<mapper namespace="com.accp.dao.LP.SiteMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Site">
+		<id column="siteid" property="siteid" jdbcType="INTEGER" />
+		<result column="sitename" property="sitename"
+			jdbcType="VARCHAR" />
+		<result column="fsiteid" property="fsiteid" jdbcType="INTEGER" />
+		<collection property="children" column="fsiteid"
+			select="queryAddess"></collection>
+	</resultMap>
+	<resultMap id="BaseResultMaps" type="com.accp.pojo.Site">
+		<id column="siteid" property="siteid" jdbcType="INTEGER" />
+		<result column="sitename" property="sitename"
+			jdbcType="VARCHAR" />
+		<result column="fsiteid" property="fsiteid" jdbcType="INTEGER" />
+		<collection property="children" column="siteid"
+			select="querystie"></collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		siteid, sitename, fsiteid
+	</sql>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select siteid, sitename, fsiteid from site
+	</select>
+	<select id="queryAddess" resultType="com.accp.pojo.Site">
+		select siteid, sitename, fsiteid from site where 1=1
+		<if test="fsiteid != 0">
+			and siteid = #{fsiteid}
+		</if>
+	</select>
+
+	<select id="queryId" resultMap="BaseResultMaps">
+		select * from site where fsiteid = #{id}
+	</select>
+	<select id="querystie" resultType="com.accp.pojo.Site">
+		select siteid, sitename, fsiteid from site where fsiteid = #{siteid}
+	</select>
+
+	<insert id="add">
+		insert into site(sitename,fsiteid) VALUES (#{site.sitename},#{site.fsiteid})
+	</insert>
+
+	<delete id="delete">
+		delete from site where siteid=#{id}
+	</delete>
+
+	<select id="SelectId" resultMap="BaseResultMap">
+		select * from site where siteid = #{id}
+	</select>
+
+
+
+	<update id="update">
+		update site
+		set
+		sitename = #{site.sitename}
+		where siteid = #{site.siteid};
+		update supplier
+		set
+		supaddress = #{site.sitename}
+		where siteid = #{site.siteid}
+	</update>
+
 </mapper>

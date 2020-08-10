@@ -15,39 +15,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accp.biz.LP.GoodsBiz;
-import com.accp.biz.LP.SiteBiz;
-import com.accp.biz.LP.SupplierBiz;
-import com.accp.pojo.Site;
-import com.accp.pojo.Supplier;
-import com.github.pagehelper.PageInfo;
+import com.accp.biz.LP.ItemsBiz;
+import com.accp.biz.LP.ProjectBiz;
+import com.accp.pojo.Items;
+import com.accp.pojo.Project;
 
 
 @RestController
 @RequestMapping("/api/lingpeng")
-public class SupplierAction {
+public class ProjectAction {
 	@Autowired
-	private SupplierBiz supplierBiz;
+	private ProjectBiz projectBiz;
 	
 	@Autowired
-	private SiteBiz siteBiz;
+	private ItemsBiz itemsBiz;
 	
 	
-	@GetMapping("/QuerySupplier")
-	public List<Supplier> select(){
-		return supplierBiz.selectAll();
+	@GetMapping("/QueryProject")
+	public List<Project> select(){
+		return projectBiz.selectAll();
 	}
 	
-	@GetMapping("/QueryByNameSupplier/{name}")
-	public List<Supplier> select(@PathVariable("name") String name){
-		return supplierBiz.selectName(name);
+	@GetMapping("/QueryByNameProject/{name}")
+	public List<Project> select(@PathVariable("name") String name){
+		return projectBiz.selectName(name);
 	}
 	
 	
-	@PostMapping("/AddBySupplier")
-	public Map<String, Object> addSupperlier(@RequestBody Supplier supplier) {
+	@PostMapping("/AddByProject")
+	public Map<String, Object> addSupperlier(@RequestBody Project project) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(supplierBiz.add(supplier) == 1) {
+		if(projectBiz.add(project) == 1) {
 			map.put("code", "200");
 			map.put("msg","ok");
 		}else {
@@ -57,10 +55,10 @@ public class SupplierAction {
 		return map;
 	}
 	
-	@DeleteMapping("/DeleteSupplier/{id}")
+	@DeleteMapping("/DeleteProject/{id}")
 	public Map<String, Object> DeleteSupperlier(@PathVariable("id") Integer id) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(supplierBiz.Delete(id) == 1) {
+		if(projectBiz.Delete(id) == 1) {
 			map.put("code", "200");
 			map.put("msg","ok");
 		}else {
@@ -70,10 +68,10 @@ public class SupplierAction {
 		return map;
 	}
 	
-	@PutMapping("/UpdateSupplier")
-	public Map<String, Object> UpdateSupperlier(@RequestBody Supplier supplier) {
+	@PutMapping("/UpdateProject")
+	public Map<String, Object> UpdateSupperlier(@RequestBody Project project) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		if(supplierBiz.Update(supplier) == 1) {
+		if(projectBiz.Update(project) == 1) {
 			map.put("code", "200");
 			map.put("msg","ok");
 		}else {
@@ -83,9 +81,9 @@ public class SupplierAction {
 		return map;
 	}
 	
-	@GetMapping("/QueryByIdSupplier/{id}")
-	public Supplier selectByIdSupplier(@PathVariable("id") Integer id){
-		return supplierBiz.selectById(id);
+	@GetMapping("/QueryByIdProject/{id}")
+	public Project selectByIdSupplier(@PathVariable("id") Integer id){
+		return projectBiz.selectById(id);
 	}
 	
 	
@@ -94,31 +92,31 @@ public class SupplierAction {
 	
 	private List<Integer> siteid = new ArrayList<Integer>();
 	
-	@GetMapping("/QuerySiteSupplier/{id}")
-	public List<Supplier> selectBySite(@PathVariable("id") Integer id){
+	@GetMapping("/QueryItemsSupplier/{id}")
+	public List<Project> selectBySite(@PathVariable("id") Integer id){
 		siteid = new ArrayList<Integer>();
-		List<Site> list = siteBiz.selectId(id);
+		List<Items> list = itemsBiz.selectId(id);
 		siteid.add(id);
-		for (Site site : list) {
-			if(site.getChildren().size() != 0) {
-				digui(site.getSiteid());
-				siteid.add(site.getSiteid());
+		for (Items site : list) {
+			if(site.getList().size() != 0) {
+				digui(site.getItemsid());
+				siteid.add(site.getItemsid());
 			}else {
-				siteid.add(site.getSiteid());
+				siteid.add(site.getItemsid());
 			}
 		}
-		return supplierBiz.selectId(siteid);
+		return projectBiz.selectId(siteid);
 	}
 	
 	public List<Integer> digui(Integer id) {
 		List<Integer> ids = new ArrayList<Integer>();
-		List<Site> list = siteBiz.selectId(id);
-		for (Site site : list) {
-			if(site.getChildren().size() != 0) {
-				digui(site.getSiteid());
-				ids.add(site.getSiteid());
+		List<Items> list = itemsBiz.selectId(id);
+		for (Items site : list) {
+			if(site.getList().size() != 0) {
+				digui(site.getItemsid());
+				ids.add(site.getItemsid());
 			}else {
-				ids.add(site.getSiteid());
+				ids.add(site.getItemsid());
 			}
 		}
 		for (Integer s : ids) {

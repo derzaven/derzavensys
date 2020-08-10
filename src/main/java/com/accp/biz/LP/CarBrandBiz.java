@@ -11,7 +11,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.accp.dao.LP.CarbrandMapper;
+import com.accp.dao.LP.CarmodelMapper;
 import com.accp.pojo.Carbrand;
+import com.accp.pojo.Carmodel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -21,6 +23,9 @@ import com.github.pagehelper.PageInfo;
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
 public class CarBrandBiz extends ServiceImpl<CarbrandMapper, Carbrand>{
+	
+	@Autowired
+	private CarmodelMapper carmodelMapper;
 	
 	public PageInfo<Carbrand> query(int pageNum,int pageSize,String name){
 		QueryWrapper<Carbrand> qw = Wrappers.query();
@@ -57,6 +62,7 @@ public class CarBrandBiz extends ServiceImpl<CarbrandMapper, Carbrand>{
 	
 	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int update(Carbrand carbrand) {
+		Integer count = carmodelMapper.update(carbrand.getCbdname(), carbrand.getCbdid());
 		return super.getBaseMapper().updateById(carbrand);
 	}
 	

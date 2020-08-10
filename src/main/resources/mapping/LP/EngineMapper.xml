@@ -23,6 +23,10 @@
     set
         engname = #{eng.engname},
         engbrand = #{eng.engbrand}
+    where engid = #{eng.engid};
+      update carmodel
+    set
+        engname = #{eng.engname}
     where engid = #{eng.engid}
   </update>
   <delete id="delete">

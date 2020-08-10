@@ -8,51 +8,42 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.LP.CarmodelMapper;
-import com.accp.dao.LP.GoodsMapper;
-import com.accp.dao.LP.SupplierMapper;
-import com.accp.pojo.Carmodel;
-import com.accp.pojo.Supplier;
+import com.accp.dao.LP.ProjectMapper;
+import com.accp.pojo.Project;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-public class SupplierBiz extends ServiceImpl<SupplierMapper, Supplier>{
+public class ProjectBiz extends ServiceImpl<ProjectMapper, Project>{
 	@Autowired
-	private SupplierMapper supplierMapper;
+	private ProjectMapper projectMapper;
 	
-	@Autowired 
-	private GoodsMapper goodsMapper;
-	
-	public List<Supplier> selectAll(){
-		return supplierMapper.selectAll();
+	public List<Project> selectAll(){
+		return projectMapper.selectAll();
 	}
-	public List<Supplier> selectId(List<Integer> list){
-		return supplierMapper.selectId(list);
+	public List<Project> selectId(List<Integer> list){
+		return projectMapper.selectId(list);
 	}
 	
-	public List<Supplier> selectName(String name){
-		QueryWrapper<Supplier> qw = Wrappers.query();
-		qw.like("supname", name);
+	public List<Project> selectName(String name){
+		QueryWrapper<Project> qw = Wrappers.query();
+		qw.like("proname", name);
 		return super.getBaseMapper().selectList(qw);
 	}
 	
-	public Integer add(Supplier entity) {
+	public Integer add(Project entity) {
 		return super.getBaseMapper().insert(entity);
 	}
 	public int Delete(Integer id) {
 		return super.getBaseMapper().deleteById(id);
 	}
 	
-	public Integer Update(Supplier entity) {
-		int count = goodsMapper.UpdateOne(entity.getSupname(), entity.getSupbrand(), entity.getSupaddress(), entity.getSupid());
+	public Integer Update(Project entity) {
 		return super.getBaseMapper().updateById(entity);
 	}
-	public Supplier selectById(Integer id) {
+	public Project selectById(Integer id) {
 		// TODO Auto-generated method stub
 		return super.getBaseMapper().selectById(id);
 	}

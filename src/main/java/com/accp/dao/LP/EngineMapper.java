@@ -3,9 +3,11 @@ package com.accp.dao.LP;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import com.accp.pojo.Engine;
 
+@Component("LPEngineMapper")
 public interface EngineMapper {
 	//查询全部
 	List<Engine> query();

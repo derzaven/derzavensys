@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.LP.ItemsMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Items">
+		<id column="itemsid" property="itemsid" jdbcType="INTEGER" />
+		<result column="itemsname" property="itemsname"
+			jdbcType="VARCHAR" />
+		<result column="fitemsid" property="fitemsid"
+			jdbcType="INTEGER" />
+		<collection property="list" column="fitemsid"
+			select="queryAddess"></collection>
+	</resultMap>
+
+	<resultMap id="BaseResultMaps" type="com.accp.pojo.Items">
+		<id column="itemsid" property="itemsid" jdbcType="INTEGER" />
+		<result column="itemsname" property="itemsname"
+			jdbcType="VARCHAR" />
+		<result column="fitemsid" property="fitemsid"
+			jdbcType="INTEGER" />
+		<collection property="list" column="itemsid"
+			select="querystie"></collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		itemsid, itemsname, fitemsid
+	</sql>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select * from items
+	</select>
+	<select id="queryAddess" resultType="com.accp.pojo.Items">
+		select itemsid, itemsname, fitemsid from items where 1=1
+		<if test="fsiteid != 0">
+			and itemsid = #{fitemsid}
+		</if>
+	</select>
+
+	<select id="queryId" resultMap="BaseResultMaps">
+		select * from items where fitemsid = #{id}
+	</select>
+	<select id="querystie" resultType="com.accp.pojo.Items">
+		select itemsid, itemsname, fitemsid from items where fitemsid = #{itemsid}
+	</select>
+
+	<insert id="add">
+		insert into items(itemsname,fitemsid) VALUES
+		(#{items.itemsname},#{items.fitemsid})
+	</insert>
+
+	<delete id="delete">
+		delete from items where itemsid=#{id}
+	</delete>
+
+	<select id="SelectId" resultMap="BaseResultMap">
+		select * from items where itemsid = #{id}
+	</select>
+
+
+
+	<update id="update">
+		update items
+		set
+		itemsname = #{items.itemsname}
+		where itemsid = #{items.itemsid};
+		update project
+		set
+		itemsname = #{items.itemsname}
+		where itemsid = #{items.itemsid}
+	</update>
+
+
+
+
+
+
+</mapper>
