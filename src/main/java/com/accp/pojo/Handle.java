@@ -16,6 +16,18 @@ public class Handle {
     private Integer fhanid;
     
     private Handle children;
+    
+    private List<Handle> childrens;
+
+    
+    
+	public List<Handle> getChildrens() {
+		return childrens;
+	}
+
+	public void setChildrens(List<Handle> childrens) {
+		this.childrens = childrens;
+	}
 
 	public String getHanindex() {
 		return hanindex;

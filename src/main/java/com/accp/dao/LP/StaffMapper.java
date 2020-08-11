@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 @Component("LPStaffMapper")
 public interface StaffMapper extends BaseMapper<Staff>{
 	Staff queryUserWithRole(@Param("userName")String userName,@Param("userPwd")String userPwd);
+	
+	List<Staff> selectAllByStaff(@Param("id")Integer id);
 }

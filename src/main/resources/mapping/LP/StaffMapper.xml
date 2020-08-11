@@ -35,6 +35,25 @@
 				select="selectParentFun"></association>
 		</collection>
 	</resultMap>
+	
+	<resultMap id="StaffMap" type="com.accp.pojo.Staff">
+		<id column="staid" property="staid" />
+		<result column="posid" property="posid" />
+		<result column="depname" property="depname" />
+		<result column="posname" property="posname" />
+		<result column="staname" property="staname" />
+		<result column="stasex" property="stasex" />
+		<result column="staborth" property="staborth" />
+		<result column="staidcard" property="staidcard" />
+		<result column="staaddress" property="staaddress" />
+		<result column="imgsrc" property="imgsrc" />
+		<result column="accounts" property="accounts" />
+		<result column="pwd" property="pwd" />
+		<result column="entrydate" property="entrydate" />
+		<result column="instate" property="instate" />
+		<result column="dimissiondate" property="dimissiondate" />
+		<result column="dimissioncause" property="dimissioncause" />
+	</resultMap>
 	<sql id="Base_Column_List">
 		staid, posid, depname, posname, staname, stasex, staborth,
 		staidcard,
@@ -42,6 +61,10 @@
 		imgsrc, accounts, pwd, entrydate, instate,
 		dimissiondate, dimissioncause
 	</sql>
+	
+	<select id="selectAllByStaff" resultMap="StaffMap">
+		select * from staff where posid=#{id} and instate = 1
+	</select>
 
 	<select id="selectParentFun" resultType="com.accp.pojo.Handle">
 		select * from handle

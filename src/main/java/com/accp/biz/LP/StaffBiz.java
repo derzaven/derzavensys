@@ -1,6 +1,7 @@
 package com.accp.biz.LP;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class StaffBiz extends ServiceImpl<StaffMapper, Staff> {
 	
 	public Staff login(String name,String pwd) {
 		return super.getBaseMapper().queryUserWithRole(name, pwd);
+	}
+	
+	public List<Staff> selectAllByStaff(Integer id){
+		return super.getBaseMapper().selectAllByStaff(id);
 	}
 
 }
