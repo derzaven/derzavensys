@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.LP.PermMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Perm" >
+    <id column="pid" property="pid" jdbcType="INTEGER" />
+    <result column="posid" property="posid" jdbcType="INTEGER" />
+    <result column="hanId" property="hanid" jdbcType="INTEGER" />
+    <result column="perm" property="perm" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pid, posid, hanId, perm
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from perm
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from perm
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Perm" >
+    insert into perm (pid, posid, hanId, 
+      perm)
+    values (#{pid,jdbcType=INTEGER}, #{posid,jdbcType=INTEGER}, #{hanid,jdbcType=INTEGER}, 
+      #{perm,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Perm" >
+    insert into perm
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        pid,
+      </if>
+      <if test="posid != null" >
+        posid,
+      </if>
+      <if test="hanid != null" >
+        hanId,
+      </if>
+      <if test="perm != null" >
+        perm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pid != null" >
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="posid != null" >
+        #{posid,jdbcType=INTEGER},
+      </if>
+      <if test="hanid != null" >
+        #{hanid,jdbcType=INTEGER},
+      </if>
+      <if test="perm != null" >
+        #{perm,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Perm" >
+    update perm
+    <set >
+      <if test="posid != null" >
+        posid = #{posid,jdbcType=INTEGER},
+      </if>
+      <if test="hanid != null" >
+        hanId = #{hanid,jdbcType=INTEGER},
+      </if>
+      <if test="perm != null" >
+        perm = #{perm,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Perm" >
+    update perm
+    set posid = #{posid,jdbcType=INTEGER},
+      hanId = #{hanid,jdbcType=INTEGER},
+      perm = #{perm,jdbcType=VARCHAR}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>

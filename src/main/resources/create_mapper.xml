@@ -20,11 +20,11 @@
             <property name="trimStrings" value="true"/>  
         </javaModelGenerator>
         <!--映射文件生成位置-->  
-        <sqlMapGenerator targetPackage="mapping" targetProject="src/main/resources">  
+        <sqlMapGenerator targetPackage="mapping.LP" targetProject="src/main/resources">  
             <property name="enableSubPackages" value="true"/>  
         </sqlMapGenerator>
          <!--dao生成位置-->  
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.accp.dao" targetProject="src/main/java">  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.accp.dao.LP" targetProject="src/main/java">  
             <property name="enableSubPackages" value="true"/>  
         </javaClientGenerator>    
          
@@ -33,6 +33,6 @@
 		domainObjectName是实体类名
 		-->  
 		<!--表1-->
-        <table tableName="engine" domainObjectName="Engine" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="perm" domainObjectName="Perm" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>  
 </generatorConfiguration>  

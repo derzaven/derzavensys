@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.LP.StaffMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Staff">
+		<id column="sid" property="staid" />
+		<result column="spid" property="posid" />
+		<result column="sname" property="depname" />
+		<result column="spname" property="posname" />
+		<result column="stname" property="staname" />
+		<result column="stsex" property="stasex" />
+		<result column="stbro" property="staborth" />
+		<result column="stcar" property="staidcard" />
+		<result column="stress" property="staaddress" />
+		<result column="simg" property="imgsrc" />
+		<result column="sacc" property="accounts" />
+		<result column="spwd" property="pwd" />
+		<result column="sen" property="entrydate" />
+		<result column="sins" property="instate" />
+		<result column="sdim" property="dimissiondate" />
+		<result column="sdimiss" property="dimissioncause" />
+		<association property="position" resultMap="pstitonMap" />
+	</resultMap>
+	<resultMap type="com.accp.pojo.Position" id="pstitonMap">
+		<id column="poid" property="posid" />
+		<result column="pid" property="depid" />
+		<result column="pname" property="posname" />
+		<collection property="list" ofType="com.accp.pojo.Handle">
+			<id column="hid" property="hanid" />
+			<result column="hcode" property="hancode" />
+			<result column="hindex" property="hanindex" />
+			<result column="himg" property="hanimg" />
+			<result column="hname" property="hanname" />
+			<result column="hfid" property="fhanid" />
+			<association property="children" column="hfid"
+				select="selectParentFun"></association>
+		</collection>
+	</resultMap>
+	<sql id="Base_Column_List">
+		staid, posid, depname, posname, staname, stasex, staborth,
+		staidcard,
+		staaddress,
+		imgsrc, accounts, pwd, entrydate, instate,
+		dimissiondate, dimissioncause
+	</sql>
+
+	<select id="selectParentFun" resultType="com.accp.pojo.Handle">
+		select * from handle
+		where hanId=#{0}
+	</select>
+
+	<!-- 登陆验证，查询出角色，操作，权限 -->
+	<select id="queryUserWithRole" resultMap="BaseResultMap">
+		SELECT s.staid sid,
+		s.posid spid,
+		s.depname sname,
+		s.posname spname,
+		s.staname stname,
+		s.stasex stsex,
+		s.staborth stbro,
+		s.staidcard stcar,
+		s.staaddress stress,
+		s.imgsrc simg,
+		s.accounts sacc,
+		s.pwd spwd,
+		s.entrydate sen,
+		s.instate sins,
+		s.dimissiondate sdim,
+		s.dimissioncause sdimiss,
+		p.posid poid,
+		p.depid pid,
+		p.posname pname,
+		h.hanid hid,
+		h.hancode hcode,
+		h.hanindex hindex,
+		h.hanimg himg,
+		h.hanname hname,
+		h.fhanid hfid
+		FROM `staff` s
+		INNER JOIN `position` p ON s.posid=p.posid
+		INNER
+		JOIN
+		perm pr ON pr.posid = p.posid
+		INNER JOIN handle h ON
+		h.hanId=pr.hanId
+		WHERE s.accounts=#{userName} AND
+		s.pwd=#{userPwd} AND
+		s.instate = 1
+	</select>
+
+
+
+
+
+
+</mapper>

@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.LP.SiteBiz;
 import com.accp.pojo.Carmodel;
 import com.accp.pojo.Site;
+
 
 @RestController
 @RequestMapping("/api/lingpeng")
