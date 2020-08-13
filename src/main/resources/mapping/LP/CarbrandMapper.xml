@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.LP.CarbrandMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Carbrand" >
+    <id column="cbdid" property="cbdid" jdbcType="INTEGER" />
+    <result column="cbdname" property="cbdname" jdbcType="VARCHAR" />
+    <result column="logogram" property="logogram" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cbdid, cbdname, logogram
+  </sql>
+ 	<!-- <select id="query" resultMap="BaseResultMap">
+ 			select * from carbrand
+ 	</select>
+ 	<select id="queryId" resultMap="BaseResultMap">
+ 			select * from carbrand where cbdid = #{id}
+ 	</select>
+ 	<select id="queryName" resultMap="BaseResultMap">
+ 			select * from carbrand where cbdname=#{name}
+ 	</select>
+ 	<select id="queryLogo" resultMap="BaseResultMap">
+ 			select * from carbrand where cbdname=#{name} or logogram=#{name}
+ 	</select>
+ 	<insert id="add">
+ 			insert into carbrand(cbdname,logogram)values(#{carbrand.cbdname},#{carbrand.logogram})
+ 	</insert>
+ 	<update id="update">
+ 			update carbrand set cbdname=#{carbrand.cbdname} ,logogram=#{carbrand.logogram} where cbdid=#{carbrand.cbdid}
+ 	</update>
+ 	<delete id="delete">
+ 			delete from carbrand where cbdid=#{id}
+ 	</delete> -->
+</mapper>

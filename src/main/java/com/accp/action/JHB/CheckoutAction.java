@@ -1,6 +1,7 @@
 package com.accp.action.JHB;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import com.accp.biz.JHB.impl.CheckoutBIzImpl;
 import com.accp.pojo.Checkout;
 import com.github.pagehelper.PageInfo;
 
+@Component("JHBCheckoutAction")
 @RestController
 @RequestMapping("/api/check")
 public class CheckoutAction {

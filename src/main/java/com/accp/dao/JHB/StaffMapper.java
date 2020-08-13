@@ -8,7 +8,7 @@ import com.accp.pojo.Staff;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Component("JHBStaffMapper")
-public interface StaffMapper extends BaseMapper<Staff>{
+public interface StaffMapper extends BaseMapper<Staff> {
     List<Staff> selectAll();
     int insert(Staff staff);
     String selectMaxId();

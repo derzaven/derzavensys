@@ -1,33 +1,32 @@
 package com.accp.pojo;
 
-public class Position {
-    private Integer posid;
+import java.io.Serializable;
+import java.util.List;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@TableName("position")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Position implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@TableId(type = IdType.AUTO,value = "itemsid")
+	private Integer posid;
 
     private Integer depid;
 
     private String posname;
-
-    public Integer getPosid() {
-        return posid;
-    }
-
-    public void setPosid(Integer posid) {
-        this.posid = posid;
-    }
-
-    public Integer getDepid() {
-        return depid;
-    }
-
-    public void setDepid(Integer depid) {
-        this.depid = depid;
-    }
-
-    public String getPosname() {
-        return posname;
-    }
-
-    public void setPosname(String posname) {
-        this.posname = posname == null ? null : posname.trim();
-    }
+    @TableField(exist = false)
+    private List<Handle> list;
 }

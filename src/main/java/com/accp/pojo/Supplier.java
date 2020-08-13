@@ -27,6 +27,8 @@ public class Supplier implements Serializable {
     private String supname;
 
     private String supbrand;
+    
+    private  Integer siteid;
 
     private String supaddress;
 

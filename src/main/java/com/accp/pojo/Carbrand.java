@@ -1,33 +1,36 @@
 package com.accp.pojo;
 
-public class Carbrand {
-    private Integer cbdid;
+import java.io.Serializable;
+import java.util.Date;
 
-    private String cbdname;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 
-    private String logogram;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public Integer getCbdid() {
-        return cbdid;
-    }
+@TableName("carbrand")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Carbrand implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@TableId(type = IdType.AUTO, value = "cbdid")
+	private Integer cbdid;
 
-    public void setCbdid(Integer cbdid) {
-        this.cbdid = cbdid;
-    }
+	private String cbdname;
 
-    public String getCbdname() {
-        return cbdname;
-    }
+	private String logogram;
 
-    public void setCbdname(String cbdname) {
-        this.cbdname = cbdname == null ? null : cbdname.trim();
-    }
+	public Carbrand(String cbdname, String logogram) {
+		super();
+		this.cbdname = cbdname;
+		this.logogram = logogram;
+	}
 
-    public String getLogogram() {
-        return logogram;
-    }
-
-    public void setLogogram(String logogram) {
-        this.logogram = logogram == null ? null : logogram.trim();
-    }
 }

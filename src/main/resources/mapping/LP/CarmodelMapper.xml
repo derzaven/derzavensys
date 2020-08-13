@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.LP.CarmodelMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Carmodel" >
+    <id column="cmlid" property="cmlid" jdbcType="INTEGER" />
+    <result column="cbdid" property="cbdid" jdbcType="INTEGER" />
+    <result column="cbdname" property="cbdname" jdbcType="VARCHAR" />
+    <result column="engid" property="engid" jdbcType="INTEGER" />
+    <result column="engname" property="engname" jdbcType="VARCHAR" />
+    <result column="cmlmodel" property="cmlmodel" jdbcType="VARCHAR" />
+    <result column="reference" property="reference" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cmlid, cbdid, cbdname, engid, engname, cmlmodel, reference
+  </sql>
+ <update id="update">
+	update carmodel
+    set
+        cbdname = #{name}
+    where cbdid = #{id} 
+</update>
+</mapper>

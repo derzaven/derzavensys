@@ -3,9 +3,11 @@ package com.accp.dao.LP;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
 
 import com.accp.pojo.Engine;
 
+@Component("LPEngineMapper")
 public interface EngineMapper {
 	//查询全部
 	List<Engine> query();
@@ -21,4 +23,7 @@ public interface EngineMapper {
 	
 	//查询id
 	Engine queryId(@Param("id")Integer id);
+	
+	//根据名称和品牌
+	List<Engine> queryBrand(@Param("name")String name,@Param("Brand")String Brand);
 }

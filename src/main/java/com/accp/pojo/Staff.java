@@ -5,6 +5,7 @@ import java.util.Date;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -22,7 +23,6 @@ public class Staff implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	@TableId(type = IdType.INPUT,value = "staid")
 	private String staid;
 
@@ -55,5 +55,6 @@ public class Staff implements Serializable {
     private Date dimissiondate;
 
     private String dimissioncause;
-
+    @TableField(exist = false)
+    private	Position position;
 }

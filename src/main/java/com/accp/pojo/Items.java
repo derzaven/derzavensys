@@ -1,9 +1,10 @@
 package com.accp.pojo;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.util.List;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -27,5 +28,6 @@ public class Items implements Serializable {
 	private String itemsname;
 	
 	private Integer fitemsid;
-	
+	@TableField(exist = false)
+	private List<Items> list;
 }

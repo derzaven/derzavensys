@@ -3,6 +3,7 @@ package com.accp.action.JHB;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.accp.biz.JHB.GroupBiz;
 import com.accp.biz.JHB.impl.GroupBizImpl;
 import com.accp.pojo.Group;
 
+@Component("JHBGroupAction")
 @RestController
 @RequestMapping("/api/group")
 public class GroupAction {

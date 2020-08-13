@@ -5,16 +5,23 @@
 		<id column="goodsid" property="goodsid" jdbcType="INTEGER" />
 		<result column="goodsname" property="goodsname"
 			jdbcType="VARCHAR" />
-		<result column="goodstype" property="goodstype" jdbcType="VARCHAR" />
-		<result column="inventory" property="inventory" jdbcType="INTEGER" />
+		<result column="inventory" property="inventory"
+			jdbcType="INTEGER" />
 		<result column="supid" property="supid" jdbcType="INTEGER" />
 		<result column="supname" property="supname" jdbcType="VARCHAR" />
-		<result column="supbrand" property="supbrand" jdbcType="VARCHAR" />
-		<result column="supaddress" property="supaddress" jdbcType="VARCHAR" />
-		<result column="goodsprice" property="goodsprice" jdbcType="DECIMAL" />
+		<result column="supbrand" property="supbrand"
+			jdbcType="VARCHAR" />
+		<result column="supaddress" property="supaddress"
+			jdbcType="VARCHAR" />
+		<result column="goodsprice" property="goodsprice"
+			jdbcType="DECIMAL" />
+		<result column="state" property="state" jdbcType="INTEGER" />
 	</resultMap>
 	<sql id="Base_Column_List">
-		goodsid, goodsname, goodstype, inventory, supid, supname, supbrand, supaddress,
-		goodsprice
+		goodsid, goodsname, inventory, supid, supname, supbrand, supaddress,
+		goodsprice,state
 	</sql>
+	<update id="UpdateOne">
+  	update goods set supname = #{name},supbrand =#{brand},supaddress = #{site} where supid = #{id}
+  </update>
 </mapper>

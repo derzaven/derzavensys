@@ -25,17 +25,21 @@ public class EngineBiz {
 		return engineMapper.queryId(id);
 	}
 	
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	public List<Engine> queryBrand(String name,String Brand) {
+		return engineMapper.queryBrand(name, Brand);
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int add(Engine eng) {
 		return engineMapper.add(eng);
 	}
 	
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int update(Engine eng) {
 		return engineMapper.update(eng);
 	}
 	
-	@Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = false)
+	@Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.READ_COMMITTED, readOnly = false)
 	public int delete(Integer id) {
 		return engineMapper.delete(id);
 	}

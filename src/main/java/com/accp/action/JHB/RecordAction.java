@@ -3,6 +3,7 @@ package com.accp.action.JHB;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import com.accp.biz.JHB.RecordBiz;
 import com.accp.pojo.Record;
 import com.accp.pojo.Repairbill;
 
+@Component("JHBRecordAction")
 @RestController
 @RequestMapping("/api/record")
 public class RecordAction {

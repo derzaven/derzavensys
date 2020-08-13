@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.xh.StarlevelMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Starlevel" >
+    <id column="lvid" property="lvid" jdbcType="INTEGER" />
+    <result column="lvname" property="lvname" jdbcType="VARCHAR" />
+    <result column="dapfasom" property="dapfasom" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lvid, lvname, dapfasom
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from starlevel
+    where lvid = #{lvid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from starlevel
+    where lvid = #{lvid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Starlevel" >
+    insert into starlevel (lvid, lvname, dapfasom
+      )
+    values (#{lvid,jdbcType=INTEGER}, #{lvname,jdbcType=VARCHAR}, #{dapfasom,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Starlevel" >
+    insert into starlevel
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lvid != null" >
+        lvid,
+      </if>
+      <if test="lvname != null" >
+        lvname,
+      </if>
+      <if test="dapfasom != null" >
+        dapfasom,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lvid != null" >
+        #{lvid,jdbcType=INTEGER},
+      </if>
+      <if test="lvname != null" >
+        #{lvname,jdbcType=VARCHAR},
+      </if>
+      <if test="dapfasom != null" >
+        #{dapfasom,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Starlevel" >
+    update starlevel
+    <set >
+      <if test="lvname != null" >
+        lvname = #{lvname,jdbcType=VARCHAR},
+      </if>
+      <if test="dapfasom != null" >
+        dapfasom = #{dapfasom,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where lvid = #{lvid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Starlevel" >
+    update starlevel
+    set lvname = #{lvname,jdbcType=VARCHAR},
+      dapfasom = #{dapfasom,jdbcType=DECIMAL}
+    where lvid = #{lvid,jdbcType=INTEGER}
+  </update>
+</mapper>
