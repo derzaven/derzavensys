@@ -41,4 +41,8 @@ public class StaffAction {
 	public List<Staff> selectWaiter() {
 		return sbz.selectWaiter();
 	}
+	@GetMapping("/selectQA")
+	public List<Staff> selectQA(){
+		return sbz.selectQA();
+	}
 }

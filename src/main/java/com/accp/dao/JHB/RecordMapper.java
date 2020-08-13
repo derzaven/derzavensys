@@ -1,17 +1,12 @@
 package com.accp.dao.JHB;
 
+import org.springframework.stereotype.Component;
+
 import com.accp.pojo.Record;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface RecordMapper {
-    int deleteByPrimaryKey(Integer recid);
-
+@Component("JHBRecordMapper")
+public interface RecordMapper extends BaseMapper<Record> {
     int insert(Record record);
 
-    int insertSelective(Record record);
-
-    Record selectByPrimaryKey(Integer recid);
-
-    int updateByPrimaryKeySelective(Record record);
-
-    int updateByPrimaryKey(Record record);
 }

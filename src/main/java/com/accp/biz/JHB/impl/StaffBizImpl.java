@@ -41,4 +41,10 @@ public class StaffBizImpl extends ServiceImpl<StaffMapper, Staff> implements Sta
 		qw.eq("posid", 7).eq("instate", 1);
 		return super.list(qw);
 	}
+	@Override
+	public List<Staff> selectQA() {
+		QueryWrapper<Staff> qw=Wrappers.query();
+		qw.eq("posid", 10).eq("instate", 1);
+		return super.list(qw);
+	}
 }

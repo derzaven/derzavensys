@@ -1,17 +1,11 @@
 package com.accp.dao.JHB;
 
+import org.springframework.stereotype.Component;
+
 import com.accp.pojo.Rework;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
-public interface ReworkMapper {
-    int deleteByPrimaryKey(Integer rewid);
-
-    int insert(Rework record);
-
-    int insertSelective(Rework record);
-
-    Rework selectByPrimaryKey(Integer rewid);
-
-    int updateByPrimaryKeySelective(Rework record);
-
-    int updateByPrimaryKey(Rework record);
+@Component("JHBReworkMapper")
+public interface ReworkMapper extends BaseMapper<Rework> {
+    int insert(Rework rework);
 }

@@ -1,106 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.JHB.ReworkMapper" >
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Rework" >
-    <id column="rewid" property="rewid" jdbcType="INTEGER" />
-    <result column="odd" property="odd" jdbcType="VARCHAR" />
-    <result column="rewtype" property="rewtype" jdbcType="VARCHAR" />
-    <result column="fine" property="fine" jdbcType="DECIMAL" />
-    <result column="rewcause" property="rewcause" jdbcType="VARCHAR" />
-    <result column="rewdate" property="rewdate" jdbcType="DATE" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    rewid, odd, rewtype, fine, rewcause, rewdate
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from rework
-    where rewid = #{rewid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from rework
-    where rewid = #{rewid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.accp.pojo.Rework" >
-    insert into rework (rewid, odd, rewtype, 
-      fine, rewcause, rewdate
-      )
-    values (#{rewid,jdbcType=INTEGER}, #{odd,jdbcType=VARCHAR}, #{rewtype,jdbcType=VARCHAR}, 
-      #{fine,jdbcType=DECIMAL}, #{rewcause,jdbcType=VARCHAR}, #{rewdate,jdbcType=DATE}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.Rework" >
-    insert into rework
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="rewid != null" >
-        rewid,
-      </if>
-      <if test="odd != null" >
-        odd,
-      </if>
-      <if test="rewtype != null" >
-        rewtype,
-      </if>
-      <if test="fine != null" >
-        fine,
-      </if>
-      <if test="rewcause != null" >
-        rewcause,
-      </if>
-      <if test="rewdate != null" >
-        rewdate,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="rewid != null" >
-        #{rewid,jdbcType=INTEGER},
-      </if>
-      <if test="odd != null" >
-        #{odd,jdbcType=VARCHAR},
-      </if>
-      <if test="rewtype != null" >
-        #{rewtype,jdbcType=VARCHAR},
-      </if>
-      <if test="fine != null" >
-        #{fine,jdbcType=DECIMAL},
-      </if>
-      <if test="rewcause != null" >
-        #{rewcause,jdbcType=VARCHAR},
-      </if>
-      <if test="rewdate != null" >
-        #{rewdate,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Rework" >
-    update rework
-    <set >
-      <if test="odd != null" >
-        odd = #{odd,jdbcType=VARCHAR},
-      </if>
-      <if test="rewtype != null" >
-        rewtype = #{rewtype,jdbcType=VARCHAR},
-      </if>
-      <if test="fine != null" >
-        fine = #{fine,jdbcType=DECIMAL},
-      </if>
-      <if test="rewcause != null" >
-        rewcause = #{rewcause,jdbcType=VARCHAR},
-      </if>
-      <if test="rewdate != null" >
-        rewdate = #{rewdate,jdbcType=DATE},
-      </if>
-    </set>
-    where rewid = #{rewid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Rework" >
-    update rework
-    set odd = #{odd,jdbcType=VARCHAR},
-      rewtype = #{rewtype,jdbcType=VARCHAR},
-      fine = #{fine,jdbcType=DECIMAL},
-      rewcause = #{rewcause,jdbcType=VARCHAR},
-      rewdate = #{rewdate,jdbcType=DATE}
-    where rewid = #{rewid,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.accp.dao.JHB.ReworkMapper">
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Rework">
+		<id column="rewid" property="rewid" jdbcType="INTEGER" />
+		<result column="odd" property="odd" jdbcType="VARCHAR" />
+		<result column="rewtype" property="rewtype" jdbcType="VARCHAR" />
+		<result column="principal" property="principal" jdbcType="VARCHAR" />
+		<result column="fine" property="fine" jdbcType="DECIMAL" />
+		<result column="rewcause" property="rewcause" jdbcType="VARCHAR" />
+		<result column="rewdate" property="rewdate" jdbcType="DATE" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		rewid, odd, rewtype, principal, fine, rewcause, rewdate
+	</sql>
+	<insert id="insert">
+		insert into rework
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="rewid != null">
+				rewid,
+			</if>
+			<if test="odd != null">
+				odd,
+			</if>
+			<if test="rewtype != null">
+				rewtype,
+			</if>
+			<if test="principal != null">
+				principal,
+			</if>
+			<if test="fine != null">
+				fine,
+			</if>
+			<if test="rewcause != null">
+				rewcause,
+			</if>
+			<if test="rewdate != null">
+				rewdate,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="rewid != null">
+				#{rewid,jdbcType=INTEGER},
+			</if>
+			<if test="odd != null">
+				#{odd,jdbcType=VARCHAR},
+			</if>
+			<if test="rewtype != null">
+				#{rewtype,jdbcType=VARCHAR},
+			</if>
+			<if test="principal != null">
+				#{principal,jdbcType=VARCHAR},
+			</if>
+			<if test="fine != null">
+				#{fine,jdbcType=DECIMAL},
+			</if>
+			<if test="rewcause != null">
+				#{rewcause,jdbcType=VARCHAR},
+			</if>
+			<if test="rewdate != null">
+				#{rewdate,jdbcType=DATE},
+			</if>
+		</trim>
+	</insert>
 </mapper>

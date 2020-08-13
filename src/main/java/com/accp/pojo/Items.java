@@ -11,25 +11,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@TableName("project")
+@TableName("items")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Project implements Serializable {
+public class Items implements Serializable {
 	
-    /**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@TableId(type = IdType.AUTO,value = "proid")
-	private Integer proid;
-
-    private String proname;
-    
-    private Integer itemsid;
-    
-    private String itemsname;
-
-    private BigDecimal proprice;
-    
+	@TableId(type = IdType.AUTO,value = "itemsid")
+	private Integer itemsid;
+	
+	private String itemsname;
+	
+	private Integer fitemsid;
+	
 }

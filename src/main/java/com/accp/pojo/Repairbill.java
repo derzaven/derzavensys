@@ -3,9 +3,11 @@ package com.accp.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -27,7 +29,7 @@ public class Repairbill implements Serializable {
 	@TableId(type = IdType.INPUT,value = "odd")
 	private String odd;
 
-    private String clino;
+    private String clrno;
 
     private Integer classid;
 
@@ -70,5 +72,10 @@ public class Repairbill implements Serializable {
     private String caatype;
 
     private BigDecimal caamoney;
-
+    @TableField(exist = false)
+    private List<Record> proList;
+    @TableField(exist = false)
+    private List<Record> goodsList;
+    @TableField(exist = false)
+    private Cilcar cilcar;
 }

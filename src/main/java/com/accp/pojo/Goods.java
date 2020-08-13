@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Goods implements Serializable {
 	/**
-	 * 123
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +40,8 @@ public class Goods implements Serializable {
     private String supaddress;
 
     private BigDecimal goodsprice;
+    
+    private Integer state;
     
     private List<Goods> goodsList;
 }

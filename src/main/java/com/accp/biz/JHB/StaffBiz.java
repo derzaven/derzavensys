@@ -10,4 +10,5 @@ public interface StaffBiz {
 	public boolean insert(Staff sta);
 	public String selectMaxId();
 	public List<Staff> selectWaiter();
+	public List<Staff> selectQA();
 }

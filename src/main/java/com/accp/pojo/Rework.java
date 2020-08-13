@@ -1,66 +1,40 @@
 package com.accp.pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
-public class Rework {
-    private Integer rewid;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@TableName("rework")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Rework implements Serializable {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@TableId(type = IdType.AUTO,value = "rewid")
+	private Integer rewid;
 
     private String odd;
 
     private String rewtype;
+    
+    private String principal;
 
     private BigDecimal fine;
 
     private String rewcause;
 
     private Date rewdate;
-
-    public Integer getRewid() {
-        return rewid;
-    }
-
-    public void setRewid(Integer rewid) {
-        this.rewid = rewid;
-    }
-
-    public String getOdd() {
-        return odd;
-    }
-
-    public void setOdd(String odd) {
-        this.odd = odd == null ? null : odd.trim();
-    }
-
-    public String getRewtype() {
-        return rewtype;
-    }
-
-    public void setRewtype(String rewtype) {
-        this.rewtype = rewtype == null ? null : rewtype.trim();
-    }
-
-    public BigDecimal getFine() {
-        return fine;
-    }
-
-    public void setFine(BigDecimal fine) {
-        this.fine = fine;
-    }
-
-    public String getRewcause() {
-        return rewcause;
-    }
-
-    public void setRewcause(String rewcause) {
-        this.rewcause = rewcause == null ? null : rewcause.trim();
-    }
-
-    public Date getRewdate() {
-        return rewdate;
-    }
-
-    public void setRewdate(Date rewdate) {
-        this.rewdate = rewdate;
-    }
+    
 }

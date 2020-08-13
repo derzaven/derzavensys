@@ -19,4 +19,10 @@ public class CilcarAction {
 	public PageInfo<Cilcar> selectAll(@PathVariable Integer pageNum,@PathVariable Integer pageSize){
 		return cb.selectAll(pageNum, pageSize);
 	}
+	@GetMapping("/selectByCarNum/{pageNum}/{pageSize}/{clrno}")
+	public PageInfo<Cilcar> selectByCarNum(@PathVariable Integer pageNum,
+			@PathVariable Integer pageSize,
+			@PathVariable String clrno){
+		return cb.selectByCarNum(pageNum, pageSize, clrno);
+	}
 }
